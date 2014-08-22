@@ -30,6 +30,10 @@ class QCModelTest(TestCase):
         self.assertEqual(saved_question.pub_date,
             datetime.datetime(2012, 3, 31, 11, 30, 5, 182371, tzinfo=tz))
 
+        self.assertFalse(saved_question.was_published_recently())
+
+    def test_saving_and_retrieving_choices(self):
+
         choice = Choice()
         choice.choice_text = '1. Demi Moore 2. Julia Roberts'
         choice.votes = 1000
