@@ -2,18 +2,16 @@
 import time
 import datetime
 
-# 3rd party lib imports
-import pytz
-
 # django and local imports
 from django.test import TestCase
+from django.utils import timezone
 from polls.models import Question, Choice
 
 # Create your tests here.
 class QCModelTest(TestCase):
 
     def test_saving_and_retrieving_questions(self):
-        tz = pytz.timezone('America/Chicago')
+        tz = timezone.get_default_timezone()
         question = Question()
         question.question_text = 'Who is the most famous actress?'
         question.pub_date = datetime.datetime(2012, 3, 31, 11, 30, 5, 182371, tzinfo=tz)
